@@ -1,0 +1,19 @@
+   textarea {
+       color: darkgray;
+      
+   }
+   
+   .buttons {
+       display: block
+   }
+   
+   .buttons button {
+       margin: 20px;
+   }
+
+   .posts {
+       color: black;
+       margin: 10px;
+   }
+
+  

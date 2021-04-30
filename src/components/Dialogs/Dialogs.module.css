@@ -1,0 +1,56 @@
+.dialogs {
+display: grid;
+grid-template-columns: 2fr 2fr 8fr;
+grid-template-rows: repeat(10* 1fr)
+}
+.dialogItems {
+padding: 10px;
+
+
+}
+
+.dialog a {
+    padding: 0;
+    text-decoration: none;
+    color:rgb(70, 67, 67);
+    font-weight: 700;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.dialogItems .active {
+    color: rgb(255, 208, 0);
+}
+
+.messages {
+    grid-column: 3/4;
+   
+    padding: 10px;
+    margin-top: 20px;
+    
+}
+
+.message {
+    height: 55px;
+    margin: 5px;
+   
+}
+
+.dialog  img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+}
+
+.textarea {
+    grid-column: 3/4;
+    position: relative; 
+    grid-row: 2/3;
+    grid-row: 10/11;
+}
+ 
+.send {
+    grid-column: 3/4;
+    width: 100px;
+    background-color: rgb(252, 175, 10);
+}
