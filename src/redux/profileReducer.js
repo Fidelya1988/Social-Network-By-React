@@ -5,37 +5,44 @@ export const wrightPostActionCreator = (text) => ({ type: WRIGHT_POST, newText: 
 
 let initialState = (
     {
-    postData: [
-        { id: 1, message: 'Hey, how are you?', likeCounts: 20 },
-        { id: 2, message: 'Tell me about your dream', likeCounts: 50 },
+        postData: [
+            { id: 1, message: 'Hey, how are you?', likeCounts: 20 },
+            { id: 2, message: 'Tell me about your dream', likeCounts: 50 },
 
-    ],
+        ],
 
-    newPostText: ''
-}
+        newPostText: ''
+    }
 )
 
 
 const profileReducer = (state = initialState, action) => {
-  
+
 
     switch (action.type) {
-        case ADD_POST:
+        case ADD_POST: {
+
             let newPost = {
                 id: state.postData.length + 1,
                 message: state.newPostText,
                 likeCounts: 0
             }
-            state.postData.push(newPost);
+            let stateCopy = { ...state }
+        
+            stateCopy.postData = [...state.postData]
+            stateCopy.postData.push(newPost);
             state.newPostText = '';
-            return state;
+            return stateCopy;
+        }
+        case WRIGHT_POST: {
+            let stateCopy = {...state}
+       
+            stateCopy.newPostText = action.newText;
 
-        case WRIGHT_POST:
-            state.newPostText = action.newText;
 
-
-            return state;
-            default: return state;
+            return stateCopy;
+        }
+        default: return state;
     }
 }
 

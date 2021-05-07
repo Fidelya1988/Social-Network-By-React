@@ -7,7 +7,6 @@ import ProfileInfo from './ProfileInfo/ProfileInfo';
 
 
 const Profile = (props) => {
-debugger;
 
     return (
         <div className={styles.profile}>

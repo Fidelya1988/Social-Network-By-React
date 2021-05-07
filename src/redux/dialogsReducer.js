@@ -3,7 +3,7 @@ const WRIGHT_MESSAGE = 'WRIGHT-MESSAGE';
 export const sendMessageActionCreator = () => ({ type: SEND_MESSAGE });
 export const wrightMessageActionCreator = (text) => ({ type: WRIGHT_MESSAGE, newText: text });
 
-let initialState = (  {
+let initialState = ({
     dialogsData: [
         {
             id: 1, name: 'Vova',
@@ -49,24 +49,28 @@ let initialState = (  {
 
 
 const dialogsReducer = (state = initialState, action) => {
-  
 
-    switch (action.type)  {
-        case SEND_MESSAGE:
-        let newMessage = {
 
-            id: state.messagesData.length + 1,
-            message: state.newMessageText
+    switch (action.type) {
+        case SEND_MESSAGE: {
+            let newMessage = {
+
+                id: state.messagesData.length + 1,
+                message: state.newMessageText
+            }
+            let stateCopy = { ...state };
+            stateCopy.messagesData = [...state.messagesData];
+            stateCopy.messagesData.push(newMessage);
+            stateCopy.newMessageText = ''
+            return stateCopy;
         }
-        state.messagesData.push(newMessage);
-        state.newMessageText = ''
-        return state;
+        case WRIGHT_MESSAGE: {
+            let stateCopy = { ...state };
+            stateCopy.newMessageText = action.newText;
 
-    case WRIGHT_MESSAGE:
-        state.newMessageText = action.newText;
-
-        return state;
-       default: return state;
+            return stateCopy;
+        }
+        default: return state;
     }
 }
 
