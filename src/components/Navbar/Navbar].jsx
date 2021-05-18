@@ -28,6 +28,9 @@ import styles from './Navbar.module.css';
         <div className={`${styles.item} ${styles.active}`}>
           <NavLink to="/settings" activeClassName = {styles.activeLink}>Settings</NavLink>
         </div>
+        <div className={`${styles.item} ${styles.active}`}>
+          <NavLink to="/users" activeClassName = {styles.activeLink}>Find user</NavLink>
+        </div>
       </div>
   
   
