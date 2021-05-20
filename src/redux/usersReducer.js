@@ -18,9 +18,9 @@ export const setUsersAC = users => ({
 })
 
 let intialState = {
-    users: [
-       
-    ]
+    users: [],
+    pageSize: 10,
+    totalCount: 0
 }
 
 const usersReducer = (state = intialState, action) => {
