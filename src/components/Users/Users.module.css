@@ -20,11 +20,11 @@ img {
 }
 .selectedPage {
 
-margin: 2px;
+
 color:orange;
 }
 
-.pageButton {
+.pageButton, .selectedPage {
     margin: 2px;
-
+    font-weight: normal;
 }
