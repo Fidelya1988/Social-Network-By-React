@@ -28,3 +28,23 @@ color:orange;
     margin: 2px;
     font-weight: normal;
 }
+
+.name {
+    font-weight: 700;
+    font-size: 20px;
+    color:rgb(88, 82, 82);
+    
+}
+
+.content {
+    width: 600px;
+    height: 120px;
+   
+}
+
+.status span {
+    color: orange;
+}
+ .status, .name  {
+     display: block;
+ }

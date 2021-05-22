@@ -35,10 +35,14 @@ const Users = (props)=>{
                         </div>
 
                         <div className={styles.name}><img src={user.photos.small != null ? user.photos.small : userPhotoDefault} alt="photo" /></div>
-                        <div className={styles.name}>{user.name}</div>
-                        <div className={styles.name}>{user.status}</div>
-                        <div className={styles.name}>{'user.location.country'}</div>
-                        <div className={styles.name}>{'user.location.city'}</div>
+                        <div className={styles.content}>
+                            <div className={styles.name}>{user.name}</div>
+                            <div className={styles.status}><span>/status: </span>{user.status}</div>
+                        </div>
+                        
+                            {/* <div className={styles.name}>{'user.location.country'}</div>
+                            <div className={styles.name}>{'user.location.city'}</div> */}
+                        
 
                     </div>
                     )}
