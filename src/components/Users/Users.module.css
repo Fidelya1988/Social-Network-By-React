@@ -1,5 +1,5 @@
 .user {
-    color:black;
+    color:rgb(37, 36, 36);
 }
 
 .user div {
@@ -9,4 +9,22 @@
 
 img {
     width: 100px;
+}
+
+.pageButtons {
+    width: 100%;
+    padding: 5px;
+}
+.pageButtons span {
+    display: inline-block;
+}
+.selectedPage {
+
+margin: 2px;
+color:orange;
+}
+
+.pageButton {
+    margin: 2px;
+
 }
