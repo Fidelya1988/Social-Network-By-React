@@ -1,3 +1,34 @@
+.profileInfo {
+    color:  rgb(24, 23, 23);
+    
+}
+.backImg img {
+    width: 100%;
+    opacity: 50%;
+}
 .description {
     margin: 10px;
+}
+
+
+
+.contacts ul li {
+    color: orange;
+    
+}
+
+
+
+span {
+    color:   rgb(24, 23, 23);
+    font-weight: 700;
+}
+
+.photo img {
+    width: 150px;
+}
+
+.photo, .name {
+display: inline-block;
+margin: 10px;
 }
