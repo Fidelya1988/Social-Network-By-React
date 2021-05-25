@@ -7,7 +7,7 @@
     opacity: 50%;
 }
 .description {
-    margin: 10px;
+    margin-left: 30%;
 }
 
 
@@ -24,11 +24,32 @@ span {
     font-weight: 700;
 }
 
-.photo img {
-    width: 150px;
+.name {
+    margin-left: 50%; 
+    color:rgb(221, 115, 15);
+    font-weight: 700; 
 }
-
+.aboutMe {
+    color: black;
+    font-style: oblique;
+    font-weight: normal;
+}
 .photo, .name {
 display: inline-block;
-margin: 10px;
+
+}
+
+li {
+    list-style-type: none;
+}
+
+.largePhoto {
+    width: 600px;
+    position: fixed;
+}
+
+.smallPhoto {
+    width: 150px;
+    border: 1px solid rgb(247, 244, 244);
+    border-radius: 50%;
 }

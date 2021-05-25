@@ -7,10 +7,13 @@ import ProfileInfo from './ProfileInfo/ProfileInfo';
 
 
 const Profile = (props) => {
-   
+
     return (
         <div className={styles.profile}>
-            <ProfileInfo profileInfo={props.profileInfo} />
+            <ProfileInfo profileInfo={props.profileInfo}
+                setCurrentProfilePhoto={props.setCurrentProfilePhoto}
+                isProfilePhotoSmall={props.isProfilePhotoSmall}
+                toggleProfilePhoto={props.toggleProfilePhoto} />
 
             <MyPostsContainer />
 
