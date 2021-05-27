@@ -3,6 +3,40 @@ import Preloader from '../../commons/Preloader.jsx/Preloader';
 import styles from './ProfileInfo.module.css';
 import defaultUserPhoto from '../../../assets/images/default-user.png'
 
+const Contacts = (props) => {
+
+  const contactsArray = Object.entries(props.contacts)
+
+
+  const contacts = contactsArray.map(contact => {
+
+    if (contact[1] !== null && contact[1] !== '') {
+     
+      return <div> <span>{contact[0]}: </span> {contact[1]}</div>
+    }
+
+
+
+
+
+
+  })
+
+
+
+
+
+
+  return (
+
+    <div>
+     <h3>Contacts:</h3>
+      {contacts}
+
+    </div>
+  )
+
+}
 
 const ProfileInfo = (props) => {
 
@@ -58,39 +92,18 @@ const ProfileInfo = (props) => {
       <div className={styles.job}>
         <span>Looking for a Job:</span>
         {profileInfo.lookingForAJob
-          ? <> Yes ({profileInfo.lookingForAJobDescription}) </>
-          : <> No ({profileInfo.lookingForAJobDescription})</>}
+          ? <> Yes  </>
+          : <> No </>}
+
+        {profileInfo.lookingForAJobDescription
+          ? <span className={styles.jobDescription}>{profileInfo.lookingForAJobDescription}</span> : null}
+
       </div>
       <div className={styles.contacts}>
 
-        <h3>Contacts:</h3>
-        <ul>
-          <li>
 
-            <span>Facebook: </span>{contacts.facebook}
-          </li>
-          <li>
-            <span>Website: </span>{contacts.website}
-          </li>
-          <li>
-            <span>Vkontakte:</span> {contacts.vk}
-          </li>
-          <li>
-            <span>Twitter:</span> {contacts.twitter}
-          </li>
-          <li>
-            <span>Instagrame:</span> {contacts.instagram}
-          </li>
-          <li>
-            <span>YouTube:</span> {contacts.youtube}
-          </li>
-          <li>
-            <span>Git Hub:</span> {contacts.github}
-          </li>
-          <li>
-            <span>Main Link:</span> {contacts.mainLink}
-          </li>
-        </ul>
+        <Contacts contacts={contacts} />
+
       </div>
 
 
