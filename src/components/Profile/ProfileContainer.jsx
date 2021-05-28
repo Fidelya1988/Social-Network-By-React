@@ -4,15 +4,16 @@ import * as axios from 'axios';
 import Profile from './Profile';
 import { setUserProfileInfo, setCurrentProfilePhoto } from '../../redux/profileReducer';
 import { withRouter } from 'react-router';
+import {profileAPI } from '../../api'
 
 class ProfileContainer extends React.Component {
-    debugger;
+
     componentDidMount() {
         
     const userId = this.props.match.params.userId;
-        axios.get(`https://social-network.samuraijs.com/api/1.0/profile/${userId}`).then(response => {
+        profileAPI.getUserProfile(userId).then(data => {
 
-            this.props.setUserProfileInfo(response.data);
+            this.props.setUserProfileInfo(data);
 
 
         })
