@@ -3,20 +3,22 @@ import Preloader from '../../commons/Preloader.jsx/Preloader';
 import styles from './ProfileInfo.module.css';
 import defaultUserPhoto from '../../../assets/images/default-user.png'
 
+
 const Contacts = (props) => {
 
   const contactsArray = Object.entries(props.contacts)
 
 
-  const contacts = contactsArray.map(contact => {
+  const contacts = contactsArray.map(([key, url]) => {
 
-    if (contact[1] !== null && contact[1] !== '') {
+    if (url) {
+    
      
-      return <div> <span>{contact[0]}: </span> {contact[1]}</div>
+      return <div key ={key} className={styles.contacts}> <span>{key}: </span> {url}</div>
     }
 
 
-
+   
 
 
 
