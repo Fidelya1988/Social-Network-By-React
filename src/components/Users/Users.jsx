@@ -5,7 +5,7 @@ import userPhotoDefault from './../../assets/images/default-user.png'
 import {followTC} from '../../redux/usersReducer'
 
 const Users = (props) => {
-
+console.log(props)
     const pagesCount = Math.ceil(props.totalCount / props.pageSize);
     const pages = [];
 
@@ -20,6 +20,7 @@ const Users = (props) => {
             <h1>Users</h1>
             <div className={styles.pageButtons}>
                 {pages.map(page => {
+                    
                     return <span key={page} onClick={() => { props.onChangePage(page) }}
                         className={props.currentPage === page ? styles.selectedPage : styles.pageButton}>{page}
                     </span>
@@ -34,11 +35,11 @@ const Users = (props) => {
 
                         {
                             user.followed
-                                ? <button  onClick={() => props.unfollow(user.id)  } disabled={props.followingInProgress.some(id => id === user.id)}>
+                                ? <button className={styles.followButton} onClick={() => props.unfollow(user.id)  } disabled={props.followingInProgress.some(id => id === user.id)}>
                                     Unfollow
                                 </button>
 
-                                : <button  onClick={() => props.follow(user.id)} disabled={props.followingInProgress.some(id => id === user.id)}>
+                                : <button  className={styles.unfollowButton} onClick={() => props.follow(user.id)} disabled={props.followingInProgress.some(id => id === user.id)}>
                                     Follow
                                 </button>
                         }

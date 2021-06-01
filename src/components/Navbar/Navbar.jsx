@@ -2,13 +2,13 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import FriendsContainer from './Friends/FriendsContainer';
 import styles from './Navbar.module.css';
-import {connect} from 'react-redux'
-
+import { connect } from 'react-redux'
+import { getUserProfileInfo } from '../../redux/profileReducer';
 const Navbar = (props) => {
 
   return <nav className={styles.nav}>
     <div className={styles.links}>
-      <div className={styles.item}>
+      <div onClick={props.getUserProfileInfo(props.profileId)} className={styles.item}>
         <NavLink to={`/profile/${props.profileId}`} activeClassName={styles.activeLink}>Profile</NavLink>
       </div>
       <div className={styles.item}>
@@ -46,5 +46,5 @@ const mapStateToProps = (state) => {
   }
 }
 
-const NavbarContainer = connect(mapStateToProps, {})(Navbar)
+const NavbarContainer = connect(mapStateToProps, { getUserProfileInfo })(Navbar)
 export default NavbarContainer;

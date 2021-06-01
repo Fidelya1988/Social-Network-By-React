@@ -4,11 +4,12 @@ import styles from './Header.module.css';
 
 
 const Header = (props) => {
+    const login = props.login
     return <header className={styles.header}>
         <img src={window.location.origin + '/img/logo.png'} />
         {props.isAuth
             ? <span>
-                {props.login}
+                {login}
             </span>
             : <NavLink to='/login'>Login</NavLink>}
 

@@ -28,6 +28,7 @@ span {
     margin-left: 50%; 
     color:rgb(221, 115, 15);
     font-weight: 700; 
+    font-size: 25px;
 }
 .aboutMe {
     color: black;
@@ -50,8 +51,8 @@ li {
 
 .smallPhoto {
     width: 150px;
-    border: 1px solid rgb(247, 244, 244);
-    border-radius: 50%;
+    margin: 10px;
+    
 }
 .jobDescription {
     display: block;
@@ -62,3 +63,4 @@ li {
 .contacts {
     margin: 10px;
 }
+

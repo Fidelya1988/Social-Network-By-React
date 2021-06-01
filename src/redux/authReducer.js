@@ -7,7 +7,7 @@ export const setIsAuth = (isAuth) => ({ type: SET_IS_AUTH, isAuth })
 
 export const getAuthData = () => {
     return async dispatch => {
-        const { data, resultCode } = await authAPI.getAuth()
+        const { data, resultCode } = await authAPI.me()
 
         const { id, login, email } = data;
         console.log(data)

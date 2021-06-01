@@ -21,7 +21,7 @@ img {
 .selectedPage {
 
 
-color:orange;
+color:#e4733e;
 }
 
 .pageButton, .selectedPage {
@@ -43,8 +43,29 @@ color:orange;
 }
 
 .status span {
-    color: orange;
+    color: #e4733e;
 }
  .status, .name  {
      display: block;
+ }
+
+ .followButton {
+    background-color: #e4733e;
+     border: 2px solid rgb(88, 82, 82);
+     color: rgb(53, 46, 46);
+     font-size: 16px;
+     font-weight: 700;
+     padding: 5px;
+     border-radius: 7%;
+ }
+
+ .unfollowButton {
+    background-color: rgb(218, 213, 213);
+   
+    border: 2px solid rgb(88, 82, 82);
+    color: rgb(53, 46, 46);
+    font-size: 16px;
+    font-weight: 700;
+    padding: 5px;
+    border-radius: 7%; 
  }

@@ -5,7 +5,7 @@ import DialogsContainer from './components/Dialogs/DialogsContainer';
 
 import HeaderContainer from './components/Header/HeaderContainer';
 import Music from './components/Music/Music';
-import Navbar from './components/Navbar/Navbar]';
+import Navbar from './components/Navbar/Navbar';
 import News from './components/News/News';
 
 import ProfileContainer from './components/Profile/ProfileContainer';
