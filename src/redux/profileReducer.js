@@ -1,4 +1,4 @@
-import { bindActionCreators } from "redux";
+import {profileAPI} from '../api'
 
 const ADD_POST = 'ADD-POST';
 const WRIGHT_POST = 'WRIGHT-POST';
@@ -9,6 +9,17 @@ export const addPostActionCreator = () => ({ type: ADD_POST });
 export const wrightPostActionCreator = (text) => ({ type: WRIGHT_POST, newText: text });
 export const setUserProfileInfo = (userProfileInfo) => ({ type: SET_USER_PROFILE, userProfileInfo });
 export const setCurrentProfilePhoto = (isProfilePhotoSmall) => ({ type: SET_CURRENT_PROFILE_PHOTO, isProfilePhotoSmall })
+
+export const getUserProfileInfo=(userId) => {
+    return async dispatch => {
+      const data = await profileAPI.getUserProfile(userId);
+     
+            dispatch(setUserProfileInfo(data));
+
+
+     
+    }
+}
 
 let initialState = (
 

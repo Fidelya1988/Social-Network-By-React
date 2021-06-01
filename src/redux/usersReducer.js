@@ -45,13 +45,12 @@ export const follow = (id) => {
     return dispatch => {
         dispatch(toggleFollowingDisabled(true, id));
 
-        // console.log(dispatch(followingInProgress)
         usersAPI.followUser(id).then(data => {
             if (data.resultCode == 0) {
                 dispatch(followSucess(id));
             }
             dispatch(toggleFollowingDisabled(false, id));
-            // console.log(dispatch(followingInProgress)
+
         })
 
     }
@@ -61,27 +60,26 @@ export const unfollow = (id) => {
     return dispatch => {
         dispatch(toggleFollowingDisabled(true, id));
 
-        // console.log(dispatch(followingInProgress)
         usersAPI.unfollowUser(id).then(data => {
             if (data.resultCode == 0) {
                 dispatch(unfollowSucess(id));
             }
             dispatch(toggleFollowingDisabled(false, id));
-            // console.log(dispatch(followingInProgress)
+
         })
 
     }
 }
 
 export const getUsersTC = (currentPage, pageSize) => {
-    return dispatch => {
+    return async dispatch => {
         dispatch(toggleIsFetching(true))
-        usersAPI.getUsers(currentPage, pageSize)
-            .then(data => {
-                dispatch(toggleIsFetching(false))
-                dispatch(setUsers(data.items))
-                dispatch(setTotalCount(data.totalCount))
-            })
+        const { items, totalCount } = await usersAPI.getUsers(currentPage, pageSize)
+
+        dispatch(toggleIsFetching(false))
+        dispatch(setUsers(items))
+        dispatch(setTotalCount(totalCount))
+
 
     }
 }
