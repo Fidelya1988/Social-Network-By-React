@@ -1,7 +1,7 @@
 const SEND_MESSAGE = 'SEND-MESSAGE';
 const WRIGHT_MESSAGE = 'WRIGHT-MESSAGE';
-export const sendMessageActionCreator = () => ({ type: SEND_MESSAGE });
-export const wrightMessageActionCreator = (text) => ({ type: WRIGHT_MESSAGE, newText: text });
+export const sendMessage = () => ({ type: SEND_MESSAGE });
+export const wrightMessage= (text) => ({ type: WRIGHT_MESSAGE, newText: text });
 
 let initialState = ({
     dialogsData: [

@@ -79,7 +79,7 @@ export const getUsersTC = (currentPage, pageSize) => {
         dispatch(toggleIsFetching(false))
         dispatch(setUsers(items))
         dispatch(setTotalCount(totalCount))
-
+        dispatch(setCurrentPage(currentPage))
 
     }
 }

@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Redirect } from 'react-router-dom';
 import FriendsContainer from './Friends/FriendsContainer';
 import styles from './Navbar.module.css';
 import { connect } from 'react-redux'
@@ -8,7 +8,10 @@ const Navbar = (props) => {
 
   return <nav className={styles.nav}>
     <div className={styles.links}>
-      <div onClick={props.getUserProfileInfo(props.profileId)} className={styles.item}>
+      <div onClick={() => {
+        if (props.isAuth) { props.getUserProfileInfo(props.profileId) }
+      }} className={styles.item}>
+
         <NavLink to={`/profile/${props.profileId}`} activeClassName={styles.activeLink}>Profile</NavLink>
       </div>
       <div className={styles.item}>
@@ -42,7 +45,8 @@ const Navbar = (props) => {
 
 const mapStateToProps = (state) => {
   return {
-    profileId: state.auth.id
+    profileId: state.auth.id,
+    isAuth: state.auth.isAuth
   }
 }
 

@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './Users.module.css';
 import { NavLink } from 'react-router-dom';
 import userPhotoDefault from './../../assets/images/default-user.png'
-import {followTC} from '../../redux/usersReducer'
+
 
 const Users = (props) => {
 console.log(props)

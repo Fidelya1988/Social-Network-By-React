@@ -2,6 +2,7 @@ import React from 'react';
 import Preloader from '../../commons/Preloader.jsx/Preloader';
 import styles from './ProfileInfo.module.css';
 import defaultUserPhoto from '../../../assets/images/default-user.png'
+import { Redirect } from 'react-router';
 
 
 const Contacts = (props) => {
@@ -12,13 +13,13 @@ const Contacts = (props) => {
   const contacts = contactsArray.map(([key, url]) => {
 
     if (url) {
-    
-     
-      return <div key ={key} className={styles.contacts}> <span>{key}: </span> {url}</div>
+
+
+      return <div key={key} className={styles.contacts}> <span>{key}: </span> {url}</div>
     }
 
 
-   
+
 
 
 
@@ -32,7 +33,7 @@ const Contacts = (props) => {
   return (
 
     <div>
-     <h3>Contacts:</h3>
+      <h3>Contacts:</h3>
       {contacts}
 
     </div>
@@ -51,6 +52,7 @@ const ProfileInfo = (props) => {
 
   const smallPhoto = profileInfo.photos.small;
   const largePhoto = profileInfo.photos.large;
+  // if (!props.isAuth) return <Redirect to='/login' />
 
 
   return (

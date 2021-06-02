@@ -12,6 +12,7 @@ import ProfileContainer from './components/Profile/ProfileContainer';
 import Settings from './components/Settings/Settings';
 
 import UsersContainer from './components/Users/UsersContainer';
+import LoginPage from './Login/Login';
 
 
 
@@ -42,6 +43,7 @@ const App = (props) => {
                 />} />
                 <Route path='/music' render={() => <Music />} />
                 <Route path='/settings' render={() => <Settings />} />
+                <Route path='/login' render={() => <LoginPage/>} />
             </div>
 
 
