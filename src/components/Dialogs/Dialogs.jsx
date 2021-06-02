@@ -26,8 +26,7 @@ const Dialogs = (props) => {
         props.onChangeText(text)
     }
 
-if (!props.isAuth)
- return <Redirect to ='/login'/>
+
   
    
 
