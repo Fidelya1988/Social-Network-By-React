@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { follow, unfollow, getUsersTC } from './../../redux/usersReducer';
 import Users from './Users'
 import Preloader from '../commons/Preloader.jsx/Preloader';
+import { compose } from 'redux';
 
 class UsersContainer extends React.Component {
 
@@ -11,16 +12,16 @@ class UsersContainer extends React.Component {
     componentDidMount() {
         this.props.getUsersTC(this.props.currentPage, this.props.pageSize)
 
-       
+
 
     }
 
     onChangePage = (pageNumber) => {
         this.props.getUsersTC(pageNumber, this.props.pageSize);
-        
+
     }
 
-   
+
     render() {
         return (
             <div>
@@ -52,6 +53,9 @@ const mapStateToProps = (state) => {
 }
 
 
-export default connect(mapStateToProps, {
-    follow, unfollow, getUsersTC
-})(UsersContainer);
+
+
+export default compose(
+    connect(mapStateToProps, {
+        follow, unfollow, getUsersTC
+    }))(UsersContainer)
