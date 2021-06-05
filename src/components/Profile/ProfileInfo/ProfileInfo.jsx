@@ -2,7 +2,8 @@ import React from 'react';
 import Preloader from '../../commons/Preloader.jsx/Preloader';
 import styles from './ProfileInfo.module.css';
 import defaultUserPhoto from '../../../assets/images/default-user.png'
-import { Redirect } from 'react-router';
+import ProfileStatus from './ProfileStatus';
+import {profileAPI} from '../../../api'
 
 
 const Contacts = (props) => {
@@ -52,17 +53,12 @@ const ProfileInfo = (props) => {
 
   const smallPhoto = profileInfo.photos.small;
   const largePhoto = profileInfo.photos.large;
-  // if (!props.isAuth) return <Redirect to='/login' />
+
 
 
   return (
     <div className={styles.profileInfo}>
-      <div className={styles.backImg}>
-        <img
-          src='https://d585tldpucybw.cloudfront.net/sfimages/default-source/blogs/templates/reactt-dark_870x220.png?sfvrsn=ef69fd61_3'
-          alt='background' />
 
-      </div>
 
 
 
@@ -76,7 +72,7 @@ const ProfileInfo = (props) => {
 
         }
 
-
+        <ProfileStatus status={props.status} updateStatus = {props.updateStatus}/>
 
 
 
@@ -86,9 +82,7 @@ const ProfileInfo = (props) => {
 
       <div className={styles.name}>
         <h1>{profileInfo.fullName}</h1>
-        <div className={styles.aboutMe}>
-          {profileInfo.aboutMe}
-        </div>
+        <div className={styles.aboutMe}>{profileInfo.aboutMe}</div>
       </div>
 
 

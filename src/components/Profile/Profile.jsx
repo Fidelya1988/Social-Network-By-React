@@ -13,7 +13,9 @@ const Profile = (props) => {
             <ProfileInfo profileInfo={props.profileInfo}
                 setCurrentProfilePhoto={props.setCurrentProfilePhoto}
                 isProfilePhotoSmall={props.isProfilePhotoSmall}
-                toggleProfilePhoto={props.toggleProfilePhoto} />
+                toggleProfilePhoto={props.toggleProfilePhoto}
+                status= {props.status} 
+                updateStatus = {props.updateStatus} />
 
             <MyPostsContainer />
 

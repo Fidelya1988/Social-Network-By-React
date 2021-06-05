@@ -1,29 +1,50 @@
-import {profileAPI} from '../api'
+import { profileAPI } from '../api'
 
 const ADD_POST = 'ADD-POST';
 const WRIGHT_POST = 'WRIGHT-POST';
 const SET_USER_PROFILE = 'SET-USER-PROFILE';
 const SET_CURRENT_PROFILE_PHOTO = 'SET-CURRENT-PROFILE-PHOTO';
+const SET_STATUS_MESSAGE = 'SET-STATUS-MESSAGE'
 
 export const addPostActionCreator = () => ({ type: ADD_POST });
 export const wrightPostActionCreator = (text) => ({ type: WRIGHT_POST, newText: text });
 export const setUserProfileInfo = (userProfileInfo) => ({ type: SET_USER_PROFILE, userProfileInfo });
 export const setCurrentProfilePhoto = (isProfilePhotoSmall) => ({ type: SET_CURRENT_PROFILE_PHOTO, isProfilePhotoSmall })
+export const setStatusMessage = (status) => ({ type: SET_STATUS_MESSAGE, status })
 
-export const getUserProfileInfo=(userId) => {
+export const getUserProfileInfo = (userId) => {
     return async dispatch => {
-      const data = await profileAPI.getUserProfile(userId);
-     
-            dispatch(setUserProfileInfo(data));
+        const data = await profileAPI.getUserProfile(userId);
+
+        dispatch(setUserProfileInfo(data));
 
 
-     
+
+    }
+}
+
+export const getStatus = (userId) => {
+    return dispatch => {
+        profileAPI.getStatus(userId).then(response => {
+            return dispatch(setStatusMessage(response.data)) 
+        })
+
+    }
+}
+
+export const updateStatus = (status) => {
+    return dispatch => {
+        profileAPI.updateStatus(status).then(response => {
+             if (response.data.resultCode === 0) return dispatch(setStatusMessage(status))
+        })
+
     }
 }
 
 let initialState = (
 
     {
+        statusMessage: '',
         userProfileInfo: null,
         isProfilePhotoSmall: true,
 
@@ -47,6 +68,11 @@ const profileReducer = (state = initialState, action) => {
                 ...state,
                 userProfileInfo: action.userProfileInfo
             }
+        case SET_STATUS_MESSAGE:
+            return {
+                ...state,
+                statusMessage: action.status
+            }
         case ADD_POST:
 
             let newPost = {
@@ -69,19 +95,19 @@ const profileReducer = (state = initialState, action) => {
 
 
             }
-            case SET_CURRENT_PROFILE_PHOTO:
-            if (action.isProfilePhotoSmall)
-            {
-             return    {...state, 
-                isProfilePhotoSmall: false
+        case SET_CURRENT_PROFILE_PHOTO:
+            if (action.isProfilePhotoSmall) {
+                return {
+                    ...state,
+                    isProfilePhotoSmall: false
                 }
-             }
-             if (!action.isProfilePhotoSmall)
-             {
-              return    {...state, 
-                 isProfilePhotoSmall: true
-                 }
-              }
+            }
+            if (!action.isProfilePhotoSmall) {
+                return {
+                    ...state,
+                    isProfilePhotoSmall: true
+                }
+            }
 
         default: return state;
     }

@@ -12,23 +12,25 @@
 
 
 
-.contacts ul li {
-    color: orange;
+.contacts span {
+    color: #e48c09;
+    font-size: 17px;
     
 }
 
 
 
 span {
-    color:   rgb(24, 23, 23);
+    color:   rgb(27, 27, 27);
     font-weight: 700;
 }
 
 .name {
     margin-left: 50%; 
-    color:rgb(221, 115, 15);
+    color:rgb(54, 52, 49);
     font-weight: 700; 
-    font-size: 25px;
+    font-size: 20px;
+   
 }
 .aboutMe {
     color: black;
@@ -37,6 +39,7 @@ span {
 }
 .photo, .name {
 display: inline-block;
+
 
 }
 
@@ -52,6 +55,7 @@ li {
 .smallPhoto {
     width: 150px;
     margin: 10px;
+    border: 1px solid rgb(8, 8, 8);
     
 }
 .jobDescription {
@@ -62,5 +66,12 @@ li {
 }
 .contacts {
     margin: 10px;
+}
+
+.statusText {
+    opacity: 70%;;
+    
+    font-weight: normal;
+    
 }
 
