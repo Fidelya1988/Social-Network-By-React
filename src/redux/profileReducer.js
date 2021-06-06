@@ -3,13 +3,13 @@ import { profileAPI } from '../api'
 const ADD_POST = 'ADD-POST';
 const WRIGHT_POST = 'WRIGHT-POST';
 const SET_USER_PROFILE = 'SET-USER-PROFILE';
-const SET_CURRENT_PROFILE_PHOTO = 'SET-CURRENT-PROFILE-PHOTO';
+
 const SET_STATUS_MESSAGE = 'SET-STATUS-MESSAGE'
 
 export const addPostActionCreator = () => ({ type: ADD_POST });
 export const wrightPostActionCreator = (text) => ({ type: WRIGHT_POST, newText: text });
 export const setUserProfileInfo = (userProfileInfo) => ({ type: SET_USER_PROFILE, userProfileInfo });
-export const setCurrentProfilePhoto = (isProfilePhotoSmall) => ({ type: SET_CURRENT_PROFILE_PHOTO, isProfilePhotoSmall })
+
 export const setStatusMessage = (status) => ({ type: SET_STATUS_MESSAGE, status })
 
 export const getUserProfileInfo = (userId) => {
@@ -95,19 +95,7 @@ const profileReducer = (state = initialState, action) => {
 
 
             }
-        case SET_CURRENT_PROFILE_PHOTO:
-            if (action.isProfilePhotoSmall) {
-                return {
-                    ...state,
-                    isProfilePhotoSmall: false
-                }
-            }
-            if (!action.isProfilePhotoSmall) {
-                return {
-                    ...state,
-                    isProfilePhotoSmall: true
-                }
-            }
+       
 
         default: return state;
     }
