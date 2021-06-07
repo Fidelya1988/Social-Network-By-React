@@ -4,6 +4,7 @@ import styles from './ProfileInfo.module.css';
 import defaultUserPhoto from '../../../assets/images/default-user.png'
 import ProfileStatus from './ProfileStatus';
 import ProfilePhoto from './ProfilePhoto'
+import ProfileStatusHooks from './ProfileStatusHooks';
 
 
 
@@ -50,8 +51,8 @@ const ProfileInfo = (props) => {
 
       <ProfilePhoto smallPhoto={profileInfo.photos.small} largePhoto={profileInfo.photos.large} />
 
-      <ProfileStatus status={props.status} updateStatus={props.updateStatus} />
-
+      {/* <ProfileStatus status={props.status} updateStatus={props.updateStatus} /> */}
+<ProfileStatusHooks status={props.status} updateStatus={props.updateStatus}/>
       <div className={styles.name}>
         <h1>{profileInfo.fullName}</h1>
         <div className={styles.aboutMe}>{profileInfo.aboutMe}</div>
