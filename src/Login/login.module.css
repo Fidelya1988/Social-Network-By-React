@@ -1,0 +1,5 @@
+.errors {
+    display: inline-block;
+    color: red;
+    margin-left: 2px;
+}
