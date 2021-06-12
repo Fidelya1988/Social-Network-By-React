@@ -1,54 +1,56 @@
 import React from 'react';
 import styles from './MyPosts.module.css';
 import Post from './Post/Post';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
+
+const PostsForm = (props) => {
+
+  return (
+    <Formik
+      initialValues={
+        { postField: '' }
+      }
+      validate={values => {
+        const errors = {}
+        if (!values.postField) errors.postField = 'Type something'
+
+        return errors;
+      }
 
 
+      }
+      onSubmit={values => props.addPost(values.postField)}
+    >
+      <Form>
+        <Field as='textarea' name='postField' id='postField' placeholder='Type message...' />
+        <div>
+          <ErrorMessage name='postField' />
+        </div>
+        <button type='submit'>Add Post</button>
+      </Form>
+    </Formik>
+  )
+}
 
- 
+
 
 
 
 const MyPosts = (props) => {
 
 
-
-  
-
-  let newPost = React.createRef();
-
-  let addPost = () => {
-    
-    props.addPost();
-
-  }
-
-  let onChangeText = () => {
-    let text = newPost.current.value;
-    props.onChangeText(text);
-  }
   let postsElements =
-  props.posts.map(post => <Post message={post.message} likeCounts={post.likeCounts} key={post.id} />);
+    props.posts.map(post => <Post message={post.message} likeCounts={post.likeCounts} key={post.id} />);
 
   return (
     <div className={styles.posts}>
 
-
       <div className={styles.textarea}>
-
-        <textarea ref={newPost} name="post" id="1" cols="70" rows="5"
-          value={props.newPostText}
-          onChange={onChangeText}
-
-        />
-        <button onClick={addPost} className={styles.buttons}>Add post</button>
+        <PostsForm addPost={props.addPost} />
       </div>
-
-
 
       <h3>My Posts</h3>
       <div className={styles.item}>
-
-
         {postsElements}
       </div>
 

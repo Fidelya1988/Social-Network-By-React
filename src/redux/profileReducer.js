@@ -6,7 +6,7 @@ const SET_USER_PROFILE = 'SET-USER-PROFILE';
 
 const SET_STATUS_MESSAGE = 'SET-STATUS-MESSAGE'
 
-export const addPostActionCreator = () => ({ type: ADD_POST });
+export const addPostActionCreator = (newPost) => ({ type: ADD_POST, newPost });
 export const wrightPostActionCreator = (text) => ({ type: WRIGHT_POST, newText: text });
 export const setUserProfileInfo = (userProfileInfo) => ({ type: SET_USER_PROFILE, userProfileInfo });
 
@@ -77,7 +77,7 @@ const profileReducer = (state = initialState, action) => {
 
             let newPost = {
                 id: state.postData.length + 1,
-                message: state.newPostText,
+                message: action.newPost,
                 likeCounts: 0
             }
             return {
