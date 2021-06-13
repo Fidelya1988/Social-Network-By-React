@@ -1,9 +1,11 @@
 import React from 'react'
-import { Redirect } from 'react-router';
 import DialogItem from './DialogItem/DialogItem';
 import styles from './Dialogs.module.css'
 import Message from './Messages/Message';
 
+const DialogsForm =()=> {
+    
+}
 
 const Dialogs = (props) => {
 

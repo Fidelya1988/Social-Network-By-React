@@ -1,13 +1,13 @@
 import { profileAPI } from '../api'
 
 const ADD_POST = 'ADD-POST';
-const WRIGHT_POST = 'WRIGHT-POST';
+
 const SET_USER_PROFILE = 'SET-USER-PROFILE';
 
 const SET_STATUS_MESSAGE = 'SET-STATUS-MESSAGE'
 
-export const addPostActionCreator = (newPost) => ({ type: ADD_POST, newPost });
-export const wrightPostActionCreator = (text) => ({ type: WRIGHT_POST, newText: text });
+export const addPost = (newPost) => ({ type: ADD_POST, newPost });
+
 export const setUserProfileInfo = (userProfileInfo) => ({ type: SET_USER_PROFILE, userProfileInfo });
 
 export const setStatusMessage = (status) => ({ type: SET_STATUS_MESSAGE, status })
@@ -46,15 +46,13 @@ let initialState = (
     {
         statusMessage: '',
         userProfileInfo: null,
-        isProfilePhotoSmall: true,
+      
 
         postData: [
             { id: 1, message: 'Hey, how are you?', likeCounts: 20 },
             { id: 2, message: 'Tell me about your dream', likeCounts: 50 },
 
-        ],
-
-        newPostText: ''
+        ]
     }
 )
 
@@ -82,20 +80,13 @@ const profileReducer = (state = initialState, action) => {
             }
             return {
                 ...state,
-                postData: [...state.postData, newPost],
-                newPostText: ''
+                postData: [...state.postData, newPost]
+                
 
             }
 
 
-        case WRIGHT_POST:
-            return {
-                ...state,
-                newPostText: action.newText
-
-
-            }
-       
+        
 
         default: return state;
     }

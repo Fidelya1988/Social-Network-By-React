@@ -20,6 +20,7 @@ const PostsForm = (props) => {
 
       }
       onSubmit={values => props.addPost(values.postField)}
+     
     >
       <Form>
         <Field as='textarea' name='postField' id='postField' placeholder='Type message...' />
