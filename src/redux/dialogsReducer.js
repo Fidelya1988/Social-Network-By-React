@@ -1,7 +1,7 @@
 const SEND_MESSAGE = 'SEND-MESSAGE';
-const WRIGHT_MESSAGE = 'WRIGHT-MESSAGE';
-export const sendMessage = () => ({ type: SEND_MESSAGE });
-export const wrightMessage= (text) => ({ type: WRIGHT_MESSAGE, newText: text });
+
+export const sendMessage = (message) => ({ type: SEND_MESSAGE, message });
+
 
 let initialState = ({
     dialogsData: [
@@ -43,8 +43,7 @@ let initialState = ({
 
 
 
-    ],
-    newMessageText: ''
+    ]
 })
 
 
@@ -56,20 +55,12 @@ const dialogsReducer = (state = initialState, action) => {
             let newMessage = {
 
                 id: state.messagesData.length + 1,
-                message: state.newMessageText
+                message: action.message
             }
             return {
                 ...state,
                 messagesData: [...state.messagesData, newMessage],
-                newMessageText: ''
-            };
-
-
-        
-        case WRIGHT_MESSAGE: 
-          return {
-               ...state,
-               newMessageText: action.newText
+               
             };
 
 

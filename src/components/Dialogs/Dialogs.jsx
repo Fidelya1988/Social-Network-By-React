@@ -2,9 +2,29 @@ import React from 'react'
 import DialogItem from './DialogItem/DialogItem';
 import styles from './Dialogs.module.css'
 import Message from './Messages/Message';
+import { Formik, Form, Field} from 'formik';
 
-const DialogsForm =()=> {
-    
+const DialogsForm = (props) => {
+    return (
+        <Formik
+            initialValues={{ messageField: '' }}
+            validate={values => {
+                const errors = {}
+                if (values.messageField === '') errors.messageField = 'Required'
+                return errors
+            }}
+            onSubmit={values => props.sendMessage(values.messageField)
+            }
+        >
+            <Form>
+                <Field
+                    as='textarea' name='messageField' id='messageField' placeholder='Type message...' />
+                <div>
+                    <button type='submit'>Send</button>
+                </div>
+            </Form>
+        </Formik>
+    )
 }
 
 const Dialogs = (props) => {
@@ -16,25 +36,8 @@ const Dialogs = (props) => {
     let messagesElements =
         props.messages.map(message => <Message message={message.message} id={message.id} key={message.id} />);
 
+    return (
 
-    
-    let sendMessage = () => {
-
-        props.sendMessage()
-    }
-
-    let onChangeText = (event) => {
-       let text = event.target.value;
-        props.onChangeText(text)
-    }
-
-
-  
-   
-
-
- return (
-         
         <div className={styles.dialogs}>
 
             <div className={styles.dialogItems}>
@@ -48,14 +51,10 @@ const Dialogs = (props) => {
                 {messagesElements}
             </div>
             <div className={styles.textarea}>
-
-                <textarea name="message" id="2" cols="70" rows="5"
-                    value={props.newMessageText}
-                    onChange={onChangeText} />
-                <button onClick={sendMessage} className={styles.send}>Send</button>
+                <DialogsForm sendMessage={props.sendMessage} />
             </div>
-            
-                
+
+
 
         </div>
     )
