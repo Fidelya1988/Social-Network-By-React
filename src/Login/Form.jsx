@@ -1,4 +1,5 @@
 import { Formik, Form, Field, ErrorMessage } from 'formik'
+import { Redirect } from 'react-router-dom'
 import styles from './login.module.css'
 const LoginForm = (props) => {
   const validate = (values) => {
@@ -9,20 +10,15 @@ const LoginForm = (props) => {
     if (!values.password) {
       errors.password = 'Required'
     }
-    if (!values.repassword) {
-      errors.repassword = 'Required'
-    } else if (values.password !== values.repassword) {
-      errors.repassword = 'Passwords are diffrent!'
-    }
+   
     return errors;
   }
   return (
     <Formik
       initialValues={
         {
-          email: 'myemail@mail.com',
+          email: '',
           password: '',
-          repassword: '',
           remindMe: false
         }
 
@@ -31,37 +27,33 @@ const LoginForm = (props) => {
 
       onSubmit={values => {
         alert(JSON.stringify(values, null, 2));
-        props.login(values.email, values.password, values.remindMe)
+        props.login(values.email, values.password, values.remindMe);
+      if(props.isAuth) <Redirect to='/profile'/>
       }}
 
     >
       <Form>
         <div className={styles.inputItem}>
-          <label htmlFor='email'>Email: </label>
-          <Field type='text' name='email' id='email' />
+          
+          <Field type='email' name='email' id='email' placeholder= 'Email' />
           <div className={styles.errors}>
             <ErrorMessage name='email' />
           </div>
         </div>
         <div className={styles.inputItem}>
-          <label htmlFor='password'>Password: </label>
-          <Field type='password' name='password' id='password' />
+         
+          <Field type='password' name='password' id='password' placeholder='Password' />
           <div className={styles.errors}>
             <ErrorMessage name='password' />
           </div>
         </div>
-        <div className={styles.inputItem}>
-          <label htmlFor='repassword'>Password again: </label>
-          <Field type='password' name='repassword' id='repassword' />
-          <div className={styles.errors}>
-            <ErrorMessage name='repassword' />
-          </div>
-        </div>
-        <div className={styles.inputItem}>
+       
+        
+        <div>
           <label htmlFor='remindMe'>Remind me: </label>
-          <Field type='checkbox' name='remindMe' id='remindMe' />
+          <Field className= {styles.checkbox} type='checkbox' name='remindMe' id='remindMe' />
         </div>
-        <button type='submit'>Register</button>
+        <button type='submit'>Login</button>
       </Form>
     </Formik>
   )

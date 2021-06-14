@@ -9,5 +9,9 @@ const LoginPage = (props) => {
         </div>
     )
 }
-
-export default connect(null,{login})(LoginPage);
+const mapStateToProps = (state)=> {
+    return {
+        isAuth: state.auth.isAuth
+    }
+}
+export default connect(mapStateToProps,{login})(LoginPage);

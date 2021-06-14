@@ -11,7 +11,7 @@ export const getAuthData = () => {
 
         const { id, login, email } = data;
         console.log(data)
-        if (resultCode == 0) {
+        if (resultCode === 0) {
             dispatch(setAuthData(id, login, email))
             dispatch(setIsAuth(true))
         }
@@ -24,6 +24,20 @@ export const getAuthData = () => {
 export const login = (email, password, remindMe) => {
     return async dispatch => {
         const {resultCode } = await authAPI.login(email, password, remindMe)
+
+     
+        if (resultCode === 0) {
+            getAuthData()
+        }
+
+
+
+    }
+}
+
+export const logOut = () => {
+    return async dispatch => {
+        const {resultCode } = await authAPI.logOut()
 
      
         if (resultCode === 0) {
