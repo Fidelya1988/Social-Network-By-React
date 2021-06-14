@@ -30,7 +30,8 @@ const LoginForm = (props) => {
       validate={validate}
 
       onSubmit={values => {
-        alert(JSON.stringify(values, null, 2))
+        alert(JSON.stringify(values, null, 2));
+        props.login(values.email, values.password, values.remindMe)
       }}
 
     >

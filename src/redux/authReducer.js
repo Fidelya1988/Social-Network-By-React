@@ -20,6 +20,20 @@ export const getAuthData = () => {
 
     }
 }
+
+export const login = (email, password, remindMe) => {
+    return async dispatch => {
+        const {resultCode } = await authAPI.login(email, password, remindMe)
+
+     
+        if (resultCode === 0) {
+            getAuthData()
+        }
+
+
+
+    }
+}
 const intialState = {
 
     id: null,

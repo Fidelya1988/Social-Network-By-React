@@ -1,13 +1,13 @@
 import React from 'react';
 import LoginForm from './Form';
-
-
+import {login} from '../redux/authReducer'
+import {connect} from 'react-redux'
 const LoginPage = (props) => {
     return (
         <div>
-           <LoginForm/>
+           <LoginForm login= {props.login}/>
         </div>
     )
 }
 
-export default LoginPage;
+export default connect(null,{login})(LoginPage);
