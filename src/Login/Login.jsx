@@ -1,17 +1,20 @@
 import React from 'react';
 import LoginForm from './Form';
-import {login} from '../redux/authReducer'
-import {connect} from 'react-redux'
+import { login } from '../redux/authReducer'
+import { connect } from 'react-redux'
+import { Redirect } from 'react-router-dom';
 const LoginPage = (props) => {
     return (
         <div>
-           <LoginForm login= {props.login}/>
+            {props.isAuth ? <Redirect to={'/profile/' + props.id} /> : <LoginForm login={props.login} />}
+
         </div>
     )
 }
-const mapStateToProps = (state)=> {
+const mapStateToProps = (state) => {
     return {
-        isAuth: state.auth.isAuth
+        isAuth: state.auth.isAuth,
+        id: state.auth.id
     }
 }
-export default connect(mapStateToProps,{login})(LoginPage);
+export default connect(mapStateToProps, { login })(LoginPage);
