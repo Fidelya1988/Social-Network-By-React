@@ -64,12 +64,12 @@ export const authAPI = {
 
     },
 
-    login(email, password, remindMe) {
-        return instance.post('auth/login', { email: email, password: password, remindMe: remindMe })
-            .then(response => response)
+    async login(email, password, rememberMe) {
+        const { data } = await instance.post('auth/login', { email, password, rememberMe })
+        return data
     },
-    logOut() {
-        return instance.delete('auth/login')
-            .then(response => response)
+    async logOut() {
+        const { data } = await instance.delete('auth/login')
+        return data
     }
 }

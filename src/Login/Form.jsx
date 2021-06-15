@@ -17,9 +17,9 @@ const LoginForm = (props) => {
     <Formik
       initialValues={
         {
-          email: '',
-          password: '',
-          remindMe: false
+          email: 'oleksandram1988@gmail.com',
+          password: 'Kazkazubrik2020',
+          rememberMe: false
         }
 
       }
@@ -27,7 +27,7 @@ const LoginForm = (props) => {
 
       onSubmit={values => {
         alert(JSON.stringify(values, null, 2));
-        props.login(values.email, values.password, values.remindMe);
+        props.login(values.email, values.password, values.rememberMe);
       if(props.isAuth) <Redirect to='/profile'/>
       }}
 
@@ -50,8 +50,8 @@ const LoginForm = (props) => {
        
         
         <div>
-          <label htmlFor='remindMe'>Remind me: </label>
-          <Field className= {styles.checkbox} type='checkbox' name='remindMe' id='remindMe' />
+          <label htmlFor='rememberMe'>Remember me: </label>
+          <Field className= {styles.checkbox} type='checkbox' name='rememberMe' id='rememberMe' />
         </div>
         <button type='submit'>Login</button>
       </Form>
