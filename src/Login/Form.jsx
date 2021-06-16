@@ -10,7 +10,7 @@ const LoginForm = (props) => {
     if (!values.password) {
       errors.password = 'Required'
     }
-   
+
     return errors;
   }
   return (
@@ -26,32 +26,35 @@ const LoginForm = (props) => {
       validate={validate}
 
       onSubmit={values => {
-        alert(JSON.stringify(values, null, 2));
+        // alert(JSON.stringify(values, null, 2));
         props.login(values.email, values.password, values.rememberMe);
-      if(props.isAuth) <Redirect to='/profile'/>
+        if (props.isAuth) <Redirect to='/profile' />
       }}
 
     >
       <Form>
         <div className={styles.inputItem}>
-          
-          <Field type='email' name='email' id='email' placeholder= 'Email' />
+
+          <Field type='email' name='email' id='email' placeholder='Email' />
           <div className={styles.errors}>
             <ErrorMessage name='email' />
           </div>
         </div>
         <div className={styles.inputItem}>
-         
+
           <Field type='password' name='password' id='password' placeholder='Password' />
           <div className={styles.errors}>
             <ErrorMessage name='password' />
           </div>
         </div>
-       
-        
+        {props.serverErrors &&
+          <div className={styles.errors}>
+            {props.serverErrors}
+          </div>
+        }
         <div>
           <label htmlFor='rememberMe'>Remember me: </label>
-          <Field className= {styles.checkbox} type='checkbox' name='rememberMe' id='rememberMe' />
+          <Field className={styles.checkbox} type='checkbox' name='rememberMe' id='rememberMe' />
         </div>
         <button type='submit'>Login</button>
       </Form>

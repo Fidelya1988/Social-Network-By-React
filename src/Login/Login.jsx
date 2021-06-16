@@ -6,7 +6,7 @@ import { Redirect } from 'react-router-dom';
 const LoginPage = (props) => {
     return (
         <div>
-            {props.isAuth ? <Redirect to={'/profile/' + props.id} /> : <LoginForm login={props.login} />}
+            {props.isAuth ? <Redirect to={'/profile/' + props.id} /> : <LoginForm login={props.login} serverErrors={props.serverErrors} />}
 
         </div>
     )
@@ -14,7 +14,8 @@ const LoginPage = (props) => {
 const mapStateToProps = (state) => {
     return {
         isAuth: state.auth.isAuth,
-        id: state.auth.id
+        id: state.auth.id,
+        serverErrors: state.auth.error
     }
 }
 export default connect(mapStateToProps, { login })(LoginPage);
