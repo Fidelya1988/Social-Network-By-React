@@ -11,18 +11,22 @@ import ProfileContainer from './components/Profile/ProfileContainer';
 import Settings from './components/Settings/Settings';
 import UsersContainer from './components/Users/UsersContainer';
 import LoginPage from './Login/Login';
-import { connect } from 'react-redux';
-import { getAuthData } from './redux/authReducer'
+import { initialaseApp } from './redux/appReducer'
 import { compose } from 'redux'
 import { withRouter } from 'react-router';
+import {useDispatch, useSelector} from 'react-redux'
+import Preloader from './components/commons/Preloader.jsx/Preloader';
 
-class App extends React.Component {
-    componentDidMount() {
-        this.props.getAuthData()
-
-    }
-    render() {
-        return (
+const App =(props)=> {
+   
+ const dispatch = useDispatch();
+ const initialased=useSelector((state)=>state.app.initialased)
+ 
+ dispatch(initialaseApp())
+        
+if(!initialased) return <Preloader/>
+ return (
+    
 
             <div className='app-wrapper' >
 
@@ -31,22 +35,13 @@ class App extends React.Component {
 
                 <div className='app-wrapper-content'>
 
-                    <Route path='/dialogs' render=
-                        {() => <DialogsContainer />
-                        } />
-
-                    <Route path='/profile/:userId' render={() =>
-                        <ProfileContainer />} />
-
-                    <Route path='/users' render={() =>
-                        <UsersContainer />} />
-
-                    <Route path='/news' render={() => <News
-
-                    />} />
-                    <Route path='/music' render={() => <Music />} />
-                    <Route path='/settings' render={() => <Settings />} />
-                    <Route path='/login' render={() => <LoginPage />} />
+                    <Route path='/dialogs' component={DialogsContainer} />
+                    <Route path='/profile/:userId' component={ProfileContainer} />
+                    <Route path='/users' component={UsersContainer} />
+                    <Route path='/news' component={News} />
+                    <Route path='/music' component={Music} />
+                    <Route path='/settings' component={Settings} />
+                    <Route path='/login' component={LoginPage} />
                 </div>
 
 
@@ -55,8 +50,7 @@ class App extends React.Component {
 
         )
     }
-}
 
 export default compose(
-    connect(null, { getAuthData }),
-    withRouter)(App)
+  
+ withRouter)(App)
