@@ -14,43 +14,43 @@ import LoginPage from './Login/Login';
 import { initialaseApp } from './redux/appReducer'
 import { compose } from 'redux'
 import { withRouter } from 'react-router';
-import {useDispatch, useSelector} from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import Preloader from './components/commons/Preloader.jsx/Preloader';
 
-const App =(props)=> {
-   
- const dispatch = useDispatch();
- const initialased=useSelector((state)=>state.app.initialased)
- 
- dispatch(initialaseApp())
-        
-if(!initialased) return <Preloader/>
- return (
-    
+const App = (props) => {
 
-            <div className='app-wrapper' >
+    const dispatch = useDispatch();
+    const initialased = useSelector((state) => state.app.initialased)
 
-                <HeaderContainer />
-                <Navbar />
+    dispatch(initialaseApp())
 
-                <div className='app-wrapper-content'>
-
-                    <Route path='/dialogs' component={DialogsContainer} />
-                    <Route path='/profile/:userId' component={ProfileContainer} />
-                    <Route path='/users' component={UsersContainer} />
-                    <Route path='/news' component={News} />
-                    <Route path='/music' component={Music} />
-                    <Route path='/settings' component={Settings} />
-                    <Route path='/login' component={LoginPage} />
-                </div>
+    if (!initialased) return <Preloader />
+    return (
 
 
-            </div >
+        <div className='app-wrapper' >
+
+            <HeaderContainer />
+            <Navbar />
+
+            <div className='app-wrapper-content'>
+
+                <Route path='/dialogs' component={DialogsContainer} />
+                <Route path='/profile/:userId' component={ProfileContainer} />
+                <Route path='/users' component={UsersContainer} />
+                <Route path='/news' component={News} />
+                <Route path='/music' component={Music} />
+                <Route path='/settings' component={Settings} />
+                <Route path='/login' component={LoginPage} />
+            </div>
 
 
-        )
-    }
+        </div >
+
+
+    )
+}
 
 export default compose(
-  
- withRouter)(App)
+
+    withRouter)(App)
