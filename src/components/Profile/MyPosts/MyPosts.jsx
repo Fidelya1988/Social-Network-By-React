@@ -1,53 +1,23 @@
 import React from 'react';
 import styles from './MyPosts.module.css';
 import Post from './Post/Post';
-import { Formik, Form, Field, ErrorMessage } from 'formik';
-
-const PostsForm = (props) => {
-
-  return (
-    <Formik
-      initialValues={
-        { postField: '' }
-      }
-      validate={values => {
-        const errors = {}
-        if (!values.postField) errors.postField = 'Type something'
-
-        return errors;
-      }
-
-
-      }
-      onSubmit={values => props.addPost(values.postField)}
-     
-    >
-      <Form>
-        <Field as='textarea' name='postField' id='postField' placeholder='Type message...' />
-        <div>
-          <ErrorMessage name='postField' />
-        </div>
-        <button type='submit'>Add Post</button>
-      </Form>
-    </Formik>
-  )
-}
-
-
-
-
+import PostsForm from './MyPostsForm';
+import { useSelector, useDispatch } from 'react-redux';
+import { addPost } from '../../../redux/profileReducer';
 
 const MyPosts = (props) => {
 
-
+const posts = useSelector(state=>state.profile.postData)
+console.log(posts)
+const dispatch = useDispatch()
   let postsElements =
-    props.posts.map(post => <Post message={post.message} likeCounts={post.likeCounts} key={post.id} />);
+  posts.map(post => <Post message={post.message} likeCounts={post.likeCounts} key={post.id} />);
 
   return (
     <div className={styles.posts}>
 
       <div className={styles.textarea}>
-        <PostsForm addPost={props.addPost} />
+        <PostsForm addPost = {value=>  dispatch(addPost(value))}/>
       </div>
 
       <h3>My Posts</h3>

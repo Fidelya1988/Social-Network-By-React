@@ -5,13 +5,10 @@ import Dialogs from './Dialogs';
 import withAuthRedirect from '../../hoc/withAuthRedirect'
 import { compose } from 'redux'
 
-
-
 const mapStateToProps = (state) => {
     return {
         dialogs: state.dialogs.dialogsData,
         messages: state.dialogs.messagesData,
-        newMessageText: state.dialogs.newMessageText,
         isAuth: state.auth.isAuth
     }
 }
