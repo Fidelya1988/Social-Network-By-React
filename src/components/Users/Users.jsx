@@ -5,6 +5,7 @@ import userPhotoDefault from './../../assets/images/default-user.png'
 
 
 const Users = (props) => {
+    console.log(props.currentPage)
 console.log(props)
     const pagesCount = Math.ceil(props.totalCount / props.pageSize);
     const pages = [];

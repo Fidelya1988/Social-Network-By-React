@@ -10,7 +10,7 @@ import { useEffect, useCallback } from 'react';
 const UsersContainer  =(props) => {
 useEffect(()=>{props.getUsersTC(props.currentPage, props.pageSize)},[])
 
-  const onChangePage = useCallback(pageNumber=> {props.getUsersTC(props.pageNumber, props.pageSize);
+  const onChangePage = useCallback(pageNumber=> {props.getUsersTC(gpageNumber, props.pageSize);
   })
 
     
