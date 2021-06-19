@@ -1,28 +1,40 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { follow, unfollow, getUsersTC } from '../../redux/usersReducer';
+import Preloader from '../commons/Preloader.jsx/Preloader';
+import { compose } from 'redux';
+import { getFollowingInProgress, getUsersIsFetching, getUsersList, getUserspageSize, getUserstotalCount, getUsersPage } from '../../redux/usersSelector';
+import { useEffect, useCallback } from 'react';
 import styles from './Users.module.css';
 import { NavLink } from 'react-router-dom';
-import userPhotoDefault from './../../assets/images/default-user.png'
+import userPhotoDefault from '../../assets/images/default-user.png'
 
 
 const Users = (props) => {
-    console.log(props.currentPage)
-console.log(props)
-    const pagesCount = Math.ceil(props.totalCount / props.pageSize);
+    useEffect(()=>{props.getUsersTC(props.currentPage, props.pageSize)
+    console.log('render')},[])
+
+    const onChangePage = useCallback(pageNumber=> {props.getUsersTC(pageNumber, props.pageSize);
+    })
+  const pagesCount = Math.ceil(props.totalCount / props.pageSize);
     const pages = [];
 
     for (let i = 1; i <= pagesCount; i++) {
         pages.push(i)
     }
 
+    
     return (
        
 
         <div>
+              {props.isFetching ? <Preloader /> : null}
+
             <h1>Users</h1>
             <div className={styles.pageButtons}>
                 {pages.map(page => {
                     
-                    return <span key={page} onClick={() => { props.onChangePage(page) }}
+                    return <span key={page} onClick={() => {onChangePage(page) }}
                         className={props.currentPage === page ? styles.selectedPage : styles.pageButton}>{page}
                     </span>
                 })}
@@ -58,8 +70,7 @@ console.log(props)
                         <div className={styles.status}><span>/status: </span>{user.status}</div>
                     </div>
 
-                    {/* <div className={styles.name}>{'user.location.country'}</div>
-                            <div className={styles.name}>{'user.location.city'}</div> */}
+                   
 
 
                 </div>
@@ -71,4 +82,22 @@ console.log(props)
     )
 }
 
-export default Users
+
+
+const mapStateToProps = (state) => {
+    return {
+        users: getUsersList(state),
+        pageSize: getUserspageSize(state),
+        totalCount: getUserstotalCount(state),
+        currentPage: getUsersPage(state),
+        isFetching: getUsersIsFetching(state),
+        followingInProgress: getFollowingInProgress(state)
+    }
+}
+
+
+
+
+export default connect(mapStateToProps, {
+        follow, unfollow, getUsersTC
+    })(Users)

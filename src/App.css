@@ -14,8 +14,8 @@
    grid-area: c;
    font-weight: 500;
    line-height: 30px;
-   background-color: rgb(240, 235, 235);
-   color: rgb(17, 23, 117)
+   background-color: rgb(255, 245, 245);
+   border-right: 1px solid #6c728d80;
 }
 
 

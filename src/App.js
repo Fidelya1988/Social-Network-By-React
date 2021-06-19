@@ -9,7 +9,7 @@ import Navbar from './components/Navbar/Navbar';
 import News from './components/News/News';
 import ProfileContainer from './components/Profile/ProfileContainer';
 import Settings from './components/Settings/Settings';
-import UsersContainer from './components/Users/UsersContainer';
+import Users from './components/Users/Users';
 import LoginPage from './Login/Login';
 import { initialaseApp } from './redux/appReducer'
 import { compose } from 'redux'
@@ -37,7 +37,7 @@ const App = (props) => {
 
                 <Route path='/dialogs' component={DialogsContainer} />
                 <Route path='/profile/:userId' component={ProfileContainer} />
-                <Route path='/users' component={UsersContainer} />
+                <Route path='/users' component={Users} />
                 <Route path='/news' component={News} />
                 <Route path='/music' component={Music} />
                 <Route path='/settings' component={Settings} />
