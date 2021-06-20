@@ -3,7 +3,7 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 
 
 const PostsForm = (props) => {
-debugger;
+
   return (
     <Formik
       initialValues={

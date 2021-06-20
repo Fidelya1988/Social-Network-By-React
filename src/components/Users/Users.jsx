@@ -8,21 +8,16 @@ import { useEffect, useCallback } from 'react';
 import styles from './Users.module.css';
 import { NavLink } from 'react-router-dom';
 import userPhotoDefault from '../../assets/images/default-user.png'
-
-
+import { Pagination } from 'antd';
+import 'antd/dist/antd.css';
 const Users = (props) => {
     useEffect(()=>{props.getUsersTC(props.currentPage, props.pageSize)
     console.log('render')},[])
 
     const onChangePage = useCallback(pageNumber=> {props.getUsersTC(pageNumber, props.pageSize);
     })
-  const pagesCount = Math.ceil(props.totalCount / props.pageSize);
-    const pages = [];
-
-    for (let i = 1; i <= pagesCount; i++) {
-        pages.push(i)
-    }
-
+//   const pagesCount = Math.ceil(props.totalCount / props.pageSize);
+ 
     
     return (
        
@@ -31,14 +26,9 @@ const Users = (props) => {
               {props.isFetching ? <Preloader /> : null}
 
             <h1>Users</h1>
-            <div className={styles.pageButtons}>
-                {pages.map(page => {
-                    
-                    return <span key={page} onClick={() => {onChangePage(page) }}
-                        className={props.currentPage === page ? styles.selectedPage : styles.pageButton}>{page}
-                    </span>
-                })}
-            </div>
+            <Pagination showQuickJumper defaultCurrent={props.currentPage} total={props.totalCount} onChange={onChangePage} />
+           
+           
             {
 
                 props.users.map(user => <div className={styles.user} key={user.id}>
