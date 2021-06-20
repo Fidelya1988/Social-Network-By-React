@@ -16,8 +16,8 @@ const Users = (props) => {
 
     const onChangePage = useCallback(pageNumber=> {props.getUsersTC(pageNumber, props.pageSize);
     })
-//   const pagesCount = Math.ceil(props.totalCount / props.pageSize);
- 
+  const pagesCount = Math.ceil(props.totalCount / props.pageSize);
+
     
     return (
        
@@ -26,7 +26,7 @@ const Users = (props) => {
               {props.isFetching ? <Preloader /> : null}
 
             <h1>Users</h1>
-            <Pagination showQuickJumper defaultCurrent={props.currentPage} total={props.totalCount} onChange={onChangePage} />
+            <Pagination  defaultCurrent={props.currentPage} total={props.totalCount}  onChange={onChangePage} pageSize= {100}/>
            
            
             {

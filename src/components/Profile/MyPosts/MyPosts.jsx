@@ -5,17 +5,18 @@ import PostsForm from './MyPostsForm';
 import { useSelector, useDispatch } from 'react-redux';
 import { addPost } from '../../../redux/profileReducer';
 
-const MyPosts = (props) => {
+const MyPosts = React.memo((props) => {
 
 const posts = useSelector(state=>state.profile.postData)
-console.log(posts)
+
 const dispatch = useDispatch()
   let postsElements =
   posts.map(post => <Post message={post.message} likeCounts={post.likeCounts} key={post.id} />);
 
   return (
-    <div className={styles.posts}>
 
+    <div className={styles.posts}>
+{console.log('Render')}
       <div className={styles.textarea}>
         <PostsForm addPost = {value=>  dispatch(addPost(value))}/>
       </div>
@@ -27,5 +28,5 @@ const dispatch = useDispatch()
 
     </div>
   )
-}
+})
 export default MyPosts;
