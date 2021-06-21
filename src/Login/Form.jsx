@@ -1,6 +1,8 @@
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 import { Redirect } from 'react-router-dom'
+import MainButton from '../components/commons/Buttons'
 import styles from './login.module.css'
+
 const LoginForm = (props) => {
   const validate = (values) => {
     const errors = {}
@@ -56,7 +58,8 @@ const LoginForm = (props) => {
           <label htmlFor='rememberMe'>Remember me: </label>
           <Field className={styles.checkbox} type='checkbox' name='rememberMe' id='rememberMe' />
         </div>
-        <button type='submit'>Login</button>
+        <MainButton type='submit' value='Login'/>
+        {/* <button type='submit'>Login</button> */}
       </Form>
     </Formik>
   )

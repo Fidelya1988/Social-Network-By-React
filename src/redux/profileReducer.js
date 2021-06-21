@@ -5,9 +5,9 @@ const ADD_POST = 'ADD-POST';
 const SET_USER_PROFILE = 'SET-USER-PROFILE';
 
 const SET_STATUS_MESSAGE = 'SET-STATUS-MESSAGE'
-
+const DELETE_POST = 'DELETE_POST'
 export const addPost = (newPost) => ({ type: ADD_POST, newPost });
-
+export const deletePost = id => ({ type: DELETE_POST, id });
 export const setUserProfileInfo = (userProfileInfo) => ({ type: SET_USER_PROFILE, userProfileInfo });
 
 export const setStatusMessage = (status) => ({ type: SET_STATUS_MESSAGE, status })
@@ -26,7 +26,7 @@ export const getUserProfileInfo = (userId) => {
 export const getStatus = (userId) => {
     return dispatch => {
         profileAPI.getStatus(userId).then(response => {
-            return dispatch(setStatusMessage(response.data)) 
+            return dispatch(setStatusMessage(response.data))
         })
 
     }
@@ -35,7 +35,7 @@ export const getStatus = (userId) => {
 export const updateStatus = (status) => {
     return dispatch => {
         profileAPI.updateStatus(status).then(response => {
-             if (response.data.resultCode === 0) return dispatch(setStatusMessage(status))
+            if (response.data.resultCode === 0) return dispatch(setStatusMessage(status))
         })
 
     }
@@ -46,7 +46,7 @@ let initialState = (
     {
         statusMessage: '',
         userProfileInfo: null,
-      
+
 
         postData: [
             { id: 1, message: 'Hey, how are you?', likeCounts: 20 },
@@ -81,12 +81,18 @@ const profileReducer = (state = initialState, action) => {
             return {
                 ...state,
                 postData: [...state.postData, newPost]
-                
+
 
             }
 
+        case DELETE_POST:
 
-        
+            return {
+                ...state,
+                postData: state.postData.filter(post => post.id !== action.id)
+
+            }
+
 
         default: return state;
     }

@@ -1,18 +1,18 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import styles from './Header.module.css';
-
-
-
+import MainButton from '../commons/Buttons';
 const Header = (props) => {
     const login = props.login
     return <header className={styles.header}>
         <img src={window.location.origin + '/img/logo.png'} />
         {props.isAuth
-            ? <span>
+            ? <span className={styles.login}>
                 {login}
-                <button onClick={props.logOut}>Log Out</button>
+                <MainButton  value='Log Out' onClick={props.logOut} />
+                {/* <button className={styles.button} onClick={props.logOut}>Log Out</button> */}
             </span>
+           
             : <NavLink to='/login'>Login</NavLink>}
 
 

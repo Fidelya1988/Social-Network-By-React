@@ -8,8 +8,9 @@ import { useEffect, useCallback } from 'react';
 import styles from './Users.module.css';
 import { NavLink } from 'react-router-dom';
 import userPhotoDefault from '../../assets/images/default-user.png'
-import { Pagination } from 'antd';
-import 'antd/dist/antd.css';
+import PaginationPages from '../commons/Pagination/Pagination';
+
+// import 'antd/dist/antd.css'
 const Users = (props) => {
     useEffect(()=>{props.getUsersTC(props.currentPage, props.pageSize)
     console.log('render')},[])
@@ -20,13 +21,14 @@ const Users = (props) => {
 
     
     return (
-       
+      
 
         <div>
-              {props.isFetching ? <Preloader /> : null}
+              {(props.isFetching) ? <Preloader /> : null}
 
             <h1>Users</h1>
-            <Pagination  defaultCurrent={props.currentPage} total={props.totalCount}  onChange={onChangePage} pageSize= {100}/>
+            <PaginationPages  currentPage={props.currentPage} totalCount={props.totalCount} onChange={onChangePage} pageSize={100}/>
+            {/* <Pagination  defaultCurrent={props.currentPage} total={props.totalCount}  onChange={onChangePage} pageSize= {100}/> */}
            
            
             {

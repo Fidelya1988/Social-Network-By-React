@@ -9,7 +9,12 @@
   
   }
 
- .header span{
+ .login{
   font-size: 25px;
   
+  }
+
+  .button {
+    width: 60px;
+    font-size: 10px
   }
