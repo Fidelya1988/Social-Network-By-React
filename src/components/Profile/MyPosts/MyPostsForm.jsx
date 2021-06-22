@@ -1,6 +1,6 @@
 
 import { Formik, Form, Field, ErrorMessage } from 'formik';
-
+import MainButton from '../../commons/Buttons';
 
 const PostsForm = (props) => {
 
@@ -26,7 +26,7 @@ const PostsForm = (props) => {
         <div>
           <ErrorMessage name='postField' />
         </div>
-        <button type='submit'>Add Post</button>
+        <MainButton type='submit' value ='Add Post'/>
       </Form>
     </Formik>
   )

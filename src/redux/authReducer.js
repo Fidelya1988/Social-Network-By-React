@@ -7,6 +7,9 @@ export const setAuthData = (id, login, email) => ({ type: SET_AUTH_DATA, data: {
 export const setIsAuth = (isAuth) => ({ type: SET_IS_AUTH, isAuth })
 export const setServerErrors =(error)=> ({ type: SET_SERVER_ERRORS, error })
 
+
+
+
 export const getAuthData = () => {
     return async dispatch => {
         const { data, resultCode } = await authAPI.me()

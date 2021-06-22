@@ -2,7 +2,7 @@ import React from 'react'
 import DialogItem from './DialogItem/DialogItem';
 import styles from './Dialogs.module.css'
 import Message from './Messages/Message';
-import { Formik, Form, Field} from 'formik';
+import { Formik, Form, Field } from 'formik';
 
 const DialogsForm = (props) => {
     return (
@@ -27,7 +27,7 @@ const DialogsForm = (props) => {
     )
 }
 
-const Dialogs = (props) => {
+const Dialogs = React.memo((props) => {
 
     let dialogsElements =
         props.dialogs.map(dialog => <DialogItem name={dialog.name} id={dialog.id} img={dialog.img} key={dialog.id} />)
@@ -60,9 +60,9 @@ const Dialogs = (props) => {
     )
 
 
+  
 
+}
 
-};
-
-
+)
 export default Dialogs
