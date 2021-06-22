@@ -18,17 +18,17 @@ export const usersAPI = {
 
 
     },
-    unfollowUser(userId) {
+   async unfollowUser(userId) {
       
-        return instance.delete(`follow/${userId}`).then(response => {
-            return response.data;
-        })
+        const {data} = await instance.delete(`follow/${userId}`)
+            return data;
+        
 
     },
-    followUser(userId) {
-        return instance.post(`follow/${userId}`).then(response => {
-            return response.data;
-        })
+   async  followUser(userId) {
+       const {data} = await instance.post(`follow/${userId}`)
+            return data;
+    
 
     }
 

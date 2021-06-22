@@ -24,20 +24,18 @@ export const getUserProfileInfo = (userId) => {
 }
 
 export const getStatus = (userId) => {
-    return dispatch => {
-        profileAPI.getStatus(userId).then(response => {
-            return dispatch(setStatusMessage(response.data))
-        })
-
+    return async  dispatch => {
+      const {data} = await profileAPI.getStatus(userId)
+            return dispatch(setStatusMessage(data))
+       
     }
 }
 
 export const updateStatus = (status) => {
-    return dispatch => {
-        profileAPI.updateStatus(status).then(response => {
-            if (response.data.resultCode === 0) return dispatch(setStatusMessage(status))
-        })
-
+    return async dispatch => {
+     const {data} = await profileAPI.updateStatus(status)
+     if (data.resultCode === 0) return dispatch(setStatusMessage(status))
+   
     }
 }
 

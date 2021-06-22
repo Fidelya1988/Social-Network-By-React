@@ -24,7 +24,7 @@ youtube:
     <Input/>
 mainLink: 
     <Input/>
- <MainButton type ={props.type}/>
+ <MainButton type ="submit   " value="Save"/>
 </form>
 
 )

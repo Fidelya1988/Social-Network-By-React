@@ -4,10 +4,10 @@ import { getAuthData } from "./authReducer";
 const INITIALASED_SUCCESS = 'INITIALASED__SUCCESS';
 export const intialasedSucces = () => ({ type: INITIALASED_SUCCESS })
 export const initialaseApp = () => {
-    return (dispatch: any) => {
+    return async (dispatch: any) => {
         const promise = dispatch(getAuthData());
-        Promise.all([promise])
-            .then(() => dispatch(intialasedSucces()))
+        await Promise.all([promise])
+        dispatch(intialasedSucces())
 
     }
 }
