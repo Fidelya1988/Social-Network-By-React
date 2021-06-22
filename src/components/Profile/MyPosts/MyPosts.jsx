@@ -23,7 +23,8 @@ const dispatch = useDispatch()
 
       <h3>My Posts</h3>
       <div className={styles.item}>
-        {postsElements}
+        {[...postsElements].reverse()}
+      
       </div>
 
     </div>
