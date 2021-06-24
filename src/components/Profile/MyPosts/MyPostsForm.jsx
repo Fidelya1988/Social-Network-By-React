@@ -25,6 +25,7 @@ const PostsForm = (props) => {
         <Field as='textarea' name='postField' id='postField' placeholder='Type message...' />
         <div>
           <ErrorMessage name='postField' />
+       
         </div>
         <MainButton type='submit' value ='Add Post'/>
       </Form>

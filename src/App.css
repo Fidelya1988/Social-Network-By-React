@@ -6,18 +6,14 @@
   grid-template-columns: 3fr 10fr;
   /*grid-gap: 10px;*/
   grid-template-areas:
-  "h h"
-  "n c";
+    "h h"
+    "n c";
 }
 
 .app-wrapper-content {
-   grid-area: c;
-   font-weight: 500;
-   line-height: 30px;
-   background-color: rgb(255, 245, 245);
-   border-right: 1px solid #6c728d80;
+  grid-area: c;
+  font-weight: 500;
+  line-height: 30px;
+  background-color: rgb(255, 245, 245);
+  border-right: 1px solid #6c728d80;
 }
-
-
-
-

@@ -1,20 +1,17 @@
 .header {
-    grid-area: h;
-    background-color: #6c728d80;
-    
-  }
+  grid-area: h;
+  background-color: #6c728d80;
+}
 
-  .header img {
-    width: 50px;
-  
-  }
+.header img {
+  width: 50px;
+}
 
- .login{
+.login {
   font-size: 25px;
-  
-  }
+}
 
-  .button {
-    width: 60px;
-    font-size: 10px
-  }
+.button {
+  width: 60px;
+  font-size: 10px;
+}

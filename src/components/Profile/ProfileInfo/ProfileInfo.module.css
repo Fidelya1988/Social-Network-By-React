@@ -1,77 +1,66 @@
 .profileInfo {
-    color:  rgb(24, 23, 23);
-    
+  color: rgb(24, 23, 23);
 }
 .backImg img {
-    width: 100%;
-    opacity: 50%;
+  width: 100%;
+  opacity: 50%;
 }
 .description {
-    margin-left: 30%;
+  margin-left: 30%;
 }
-
-
 
 .contacts span {
-    color: #e48c09;
-    font-size: 17px;
-    
+  color: #e48c09;
+  font-size: 17px;
 }
 
-
-
 span {
-    color:   rgb(27, 27, 27);
-    font-weight: 700;
+  color: rgb(27, 27, 27);
+  font-weight: 700;
 }
 
 .name {
-    margin-left: 50%; 
-    color:rgb(54, 52, 49);
-    font-weight: 700; 
-    font-size: 20px;
-   
+  margin-left: 50%;
+  color: rgb(54, 52, 49);
+  font-weight: 700;
+  font-size: 20px;
 }
 .aboutMe {
-    color: black;
-    font-style: oblique;
-    font-weight: normal;
+  color: black;
+  font-style: oblique;
+  font-weight: normal;
 }
-.photo, .name {
-display: inline-block;
-
-
+.photo,
+.name {
+  display: inline-block;
 }
 
 li {
-    list-style-type: none;
+  list-style-type: none;
 }
 
 .largePhoto {
-    width: 600px;
-    position: fixed;
+  width: 600px;
+  position: fixed;
 }
 
 .smallPhoto {
-    width: 150px;
-    margin: 10px;
-    border: 1px solid rgb(8, 8, 8);
-    
+  width: 150px;
+  margin: 10px;
+  border: 1px solid rgb(8, 8, 8);
 }
 .jobDescription {
-    display: block;
-    color: rgb(63, 17, 17);
-    font-style: oblique;
-    font-weight: normal;
+  display: block;
+  color: rgb(63, 17, 17);
+  font-style: oblique;
+  font-weight: normal;
 }
 .contacts {
-    margin: 10px;
+  margin: 10px;
 }
 
 .statusText {
-    opacity: 70%;;
-    
-    font-weight: normal;
-    
-}
+  opacity: 70%;
 
+  font-weight: normal;
+}
