@@ -1,47 +1,39 @@
-import React from "react";
-
+import { useState } from "react";
 import styles from "./ProfileInfo.module.css";
 import defaultUserPhoto from "../../../assets/images/default-user.png";
 
-class ProfilePhoto extends React.Component {
-  state = {
-    isPhotoSmall: true,
+const ProfilePhoto = ({ smallPhoto, largePhoto }) => {
+  const [isPhotoSmall, setPhotoSizeState] = useState(true);
+  const handleClick = () => {
+    isPhotoSmall ? setPhotoSizeState(false) : setPhotoSizeState(true);
   };
+  const isPhotoPresent = smallPhoto;
 
-  setCurrentProfilePhoto = () => {
-    this.state.isPhotoSmall
-      ? this.setState({ isPhotoSmall: false })
-      : this.setState({ isPhotoSmall: true });
-  };
-
-  render() {
-    const isPhotoPresent = this.props.smallPhoto;
-    return (
-      <div className={styles.photo} onClick={this.setCurrentProfilePhoto}>
-        {isPhotoPresent ? (
-          this.state.isPhotoSmall ? (
-            <img
-              className={styles.smallPhoto}
-              src={this.props.smallPhoto}
-              alt="small-photo"
-            />
-          ) : (
-            <img
-              className={styles.largePhoto}
-              src={this.props.largePhoto}
-              alt="large-photo"
-            />
-          )
-        ) : (
+  return (
+    <div className={styles.photo} onClick={handleClick}>
+      {isPhotoPresent ? (
+        isPhotoSmall ? (
           <img
             className={styles.smallPhoto}
-            src={defaultUserPhoto}
+            src={smallPhoto}
             alt="small-photo"
           />
-        )}
-      </div>
-    );
-  }
-}
+        ) : (
+          <img
+            className={styles.largePhoto}
+            src={largePhoto}
+            alt="large-photo"
+          />
+        )
+      ) : (
+        <img
+          className={styles.smallPhoto}
+          src={defaultUserPhoto}
+          alt="small-photo"
+        />
+      )}
+    </div>
+  );
+};
 
 export default ProfilePhoto;

@@ -3,10 +3,10 @@ import styles from "./ProfileInfo.module.css";
 import ProfilePhoto from "./ProfilePhoto";
 import ProfileStatusHooks from "./ProfileStatusHooks";
 
-const Contacts = (props) => {
-  const contactsArray = Object.entries(props.contacts);
+const Contacts = ({ contacts }) => {
+  const contactsArray = Object.entries(contacts);
 
-  const contacts = contactsArray.map(([key, url]) => {
+  const contactsList = contactsArray.map(([key, url]) => {
     if (url) {
       return (
         <div key={key} className={styles.contacts}>
@@ -20,42 +20,43 @@ const Contacts = (props) => {
   return (
     <div>
       <h3>Contacts:</h3>
-      {contacts}
+      {contactsList}
     </div>
   );
 };
 
-const ProfileInfo = (props) => {
-  if (!props.profileInfo) {
+const ProfileInfo = ({ profileInfo, status, updateStatus }) => {
+  if (!profileInfo) {
     return <Preloader />;
   }
 
-  const { profileInfo } = props;
-  const { contacts } = profileInfo;
+  const {
+    contacts,
+    photos,
+    fullName,
+    aboutMe,
+    lookingForAJob,
+    lookingForAJobDescription,
+  } = profileInfo;
 
   return (
     <div className={styles.profileInfo}>
-      <ProfilePhoto
-        smallPhoto={profileInfo.photos.small}
-        largePhoto={profileInfo.photos.large}
-      />
+      <ProfilePhoto smallPhoto={photos.small} largePhoto={photos.large} />
 
-      <ProfileStatusHooks
-        status={props.status}
-        updateStatus={props.updateStatus}
-      />
+      <ProfileStatusHooks status={status} updateStatus={updateStatus} />
+     
       <div className={styles.name}>
-        <h1>{profileInfo.fullName}</h1>
-        <div className={styles.aboutMe}>{profileInfo.aboutMe}</div>
+        <h1>{fullName}</h1>
+        <div className={styles.aboutMe}>{aboutMe}</div>
       </div>
 
       <div className={styles.job}>
         <span>Looking for a Job:</span>
-        {profileInfo.lookingForAJob ? <> Yes </> : <> No </>}
+        {lookingForAJob ? <> Yes </> : <> No </>}
 
-        {profileInfo.lookingForAJobDescription ? (
+        {lookingForAJobDescription ? (
           <span className={styles.jobDescription}>
-            {profileInfo.lookingForAJobDescription}
+            {lookingForAJobDescription}
           </span>
         ) : null}
       </div>
