@@ -18,17 +18,17 @@ import PaginationPages from "../commons/Pagination/Pagination";
 import MainButton from "../commons/Buttons";
 
 const Users = (props) => {
-  console.log(props)
+  console.log(props);
   useEffect(() => {
     props.getUsersTC(props.currentPage, props.pageSize);
-   
   }, []);
 
   const onChangePage = (pageNumber) => {
-   console.log(pageNumber)
+    console.log(pageNumber);
     props.getUsersTC(pageNumber, props.pageSize);
   };
-  // const pagesCount = Math.ceil(props.totalCount / props.pageSize);
+  const disableButton = (userId) =>
+    props.followingInProgress.some((id) => id === userId);
 
   return (
     <div>
@@ -38,7 +38,7 @@ const Users = (props) => {
       <PaginationPages
         currentPage={props.currentPage}
         totalCount={props.totalCount}
-       onChange={onChangePage}
+        onChange={onChangePage}
         pageSize={100}
       />
 
@@ -49,18 +49,14 @@ const Users = (props) => {
               <MainButton
                 className={styles.followButton}
                 onClick={() => props.unfollow(user.id)}
-                disabled={props.followingInProgress.some(
-                  (id) => id === user.id
-                )}
+                disabled={() => disableButton(user.id)}
                 value="Unfollow"
               />
             ) : (
               <MainButton
                 className={styles.unfollowButton}
                 onClick={() => props.follow(user.id)}
-                disabled={props.followingInProgress.some(
-                  (id) => id === user.id
-                )}
+                disabled={() => disableButton(user.id)}
                 value="Follow"
               />
             )}
