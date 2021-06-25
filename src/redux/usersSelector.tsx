@@ -14,7 +14,7 @@ const getUsersListSelector = (state: State): [] => {
   return state.users.users;
 };
 export const getUsersList = createSelector(getUsersListSelector, (users) => {
-  return users.filter((user) => true);
+  return users.filter((user) => true)
 });
 
 export const getUserspageSize = (state: State) => state.users.pageSize;

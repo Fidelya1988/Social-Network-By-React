@@ -10,10 +10,10 @@ const instance = axios.create({
 
 export const usersAPI = {
   async getUsers(currentPage, pageSize) {
-    const { data } = await instance.get(
+    const  {data}  = await instance.get(
       `users?page=${currentPage}&count=${pageSize}`
     );
-
+console.log(data)
     return data;
   },
   async unfollowUser(userId) {

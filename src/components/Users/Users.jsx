@@ -18,15 +18,17 @@ import PaginationPages from "../commons/Pagination/Pagination";
 import MainButton from "../commons/Buttons";
 
 const Users = (props) => {
+  console.log(props)
   useEffect(() => {
     props.getUsersTC(props.currentPage, props.pageSize);
-    console.log("render");
+   
   }, []);
 
-  const onChangePage = useCallback((pageNumber) => {
+  const onChangePage = (pageNumber) => {
+   console.log(pageNumber)
     props.getUsersTC(pageNumber, props.pageSize);
-  });
-  const pagesCount = Math.ceil(props.totalCount / props.pageSize);
+  };
+  // const pagesCount = Math.ceil(props.totalCount / props.pageSize);
 
   return (
     <div>
@@ -36,7 +38,7 @@ const Users = (props) => {
       <PaginationPages
         currentPage={props.currentPage}
         totalCount={props.totalCount}
-        onChange={onChangePage}
+       onChange={onChangePage}
         pageSize={100}
       />
 
