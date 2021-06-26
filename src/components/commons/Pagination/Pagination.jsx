@@ -1,11 +1,12 @@
+import React from "react";
 import { Pagination } from "antd";
 import "antd/dist/antd.css";
 
-const PaginationPages = (props) => {
-
-
+const PaginationPages = React.memo((props) => {
+ 
   return (
     <div>
+      {console.log(props)}
       <Pagination
         defaultCurrent={props.currentPage}
         total={props.totalCount}
@@ -14,6 +15,6 @@ const PaginationPages = (props) => {
       />
     </div>
   );
-};
+})
 
 export default PaginationPages;

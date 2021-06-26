@@ -13,7 +13,7 @@ export const usersAPI = {
     const  {data}  = await instance.get(
       `users?page=${currentPage}&count=${pageSize}`
     );
-console.log(data)
+
     return data;
   },
   async unfollowUser(userId) {
@@ -42,10 +42,10 @@ export const profileAPI = {
 };
 
 export const authAPI = {
-  me() {
-    return instance.get(`auth/me`).then((responce) => {
-      return responce.data;
-    });
+ async me() {
+const {data} = await instance.get(`auth/me`)
+      return data;
+ 
   },
 
   async login(email, password, rememberMe) {
