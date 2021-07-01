@@ -1,7 +1,8 @@
-import { Formik, Form, Field, ErrorMessage } from "formik";
+import { Formik, Form, ErrorMessage } from "formik";
 import { Redirect } from "react-router-dom";
 import MainButton from "../components/commons/Buttons";
 import styles from "./login.module.css";
+import TextField from '@material-ui/core/TextField';
 
 const LoginForm = (props) => {
   const validate = (values) => {
@@ -31,13 +32,13 @@ const LoginForm = (props) => {
     >
       <Form>
         <div className={styles.inputItem}>
-          <Field type="email" name="email" id="email" placeholder="Email" />
+          <TextField type="email" name="email" id="email" placeholder="Email" />
           <div className={styles.errors}>
             <ErrorMessage name="email" />
           </div>
         </div>
         <div className={styles.inputItem}>
-          <Field
+          <TextField
             type="password"
             name="password"
             id="password"
@@ -52,7 +53,7 @@ const LoginForm = (props) => {
         )}
         <div>
           <label htmlFor="rememberMe">Remember me: </label>
-          <Field
+          <TextField
             className={styles.checkbox}
             type="checkbox"
             name="rememberMe"
