@@ -15,7 +15,7 @@ export const getAuthData = () => {
     const { data, resultCode } = await authAPI.me();
 
     const { id, login, email } = data;
-    // console.log(data)
+     console.log(data)
 
     if (resultCode === 0) {
       dispatch(setAuthData(id, login, email));

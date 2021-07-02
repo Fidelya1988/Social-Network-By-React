@@ -1,8 +1,8 @@
-import { Formik, Form, ErrorMessage } from "formik";
+import { Formik, Form, ErrorMessage, Field } from "formik";
 import { Redirect } from "react-router-dom";
 import MainButton from "../components/commons/Buttons";
 import styles from "./login.module.css";
-import TextField from '@material-ui/core/TextField';
+import TextField from "@material-ui/core/TextField";
 
 const LoginForm = (props) => {
   const validate = (values) => {
@@ -19,8 +19,8 @@ const LoginForm = (props) => {
   return (
     <Formik
       initialValues={{
-        email: "oleksandram1988@gmail.com",
-        password: "Kazkazubrik2020",
+        email: "",
+        password: "",
         rememberMe: false,
       }}
       validate={validate}
@@ -30,39 +30,52 @@ const LoginForm = (props) => {
         if (props.isAuth) <Redirect to="/profile" />;
       }}
     >
-      <Form>
-        <div className={styles.inputItem}>
-          <TextField type="email" name="email" id="email" placeholder="Email" />
-          <div className={styles.errors}>
-            <ErrorMessage name="email" />
+      {({ errors, touched, handleChange }) => (
+        <Form>
+   
+          <div className={styles.inputItem}>
+            <TextField
+              type="email"
+              name="email"
+              id="email"
+              placeholder="Email"
+              error={props.touched && Boolean(props.errors.email)}
+              onChange={handleChange}
+            />
+            <div className={styles.errors}>
+              <ErrorMessage name="email" />
+            </div>
           </div>
-        </div>
-        <div className={styles.inputItem}>
-          <TextField
-            type="password"
-            name="password"
-            id="password"
-            placeholder="Password"
-          />
-          <div className={styles.errors}>
-            <ErrorMessage name="password" />
+          <div className={styles.inputItem}>
+            <TextField
+              type="password"
+              name="password"
+              id="password"
+              placeholder="Password"
+              error={props.touched && Boolean(props.errors.password)}
+              onChange={handleChange}
+            />
+            <div className={styles.errors}>
+              <ErrorMessage name="password" />
+            </div>
           </div>
-        </div>
-        {props.serverErrors && (
-          <div className={styles.errors}>{props.serverErrors}</div>
-        )}
-        <div>
-          <label htmlFor="rememberMe">Remember me: </label>
-          <TextField
-            className={styles.checkbox}
-            type="checkbox"
-            name="rememberMe"
-            id="rememberMe"
-          />
-        </div>
-        <MainButton type="submit" value="Login" />
-        {/* <button type='submit'>Login</button> */}
-      </Form>
+          {props.serverErrors && (
+            <div className={styles.errors}>{props.serverErrors}</div>
+          )}
+          <div>
+            <label htmlFor="rememberMe">Remember me: </label>
+            <TextField
+              className={styles.checkbox}
+              type="checkbox"
+              name="rememberMe"
+              id="rememberMe"
+              onChange={handleChange}
+            />
+          </div>
+          <MainButton type="submit" value="Login" />
+          {/* <button type='submit'>Login</button> */}
+        </Form>
+      )}
     </Formik>
   );
 };
