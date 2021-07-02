@@ -18,6 +18,10 @@
 
   .errors {
       border: 1px solid red;
-      color: red;
+      
     
+  }
+
+  .errorsMessage {
+    color: red;
   }

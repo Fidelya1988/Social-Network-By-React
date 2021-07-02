@@ -21,10 +21,11 @@ const PostsForm = (props) => {
             id="postField"
             placeholder="Type message..."
             className={errors.postField && styles.errors}
+           
           />
 
-          <div>
-            <ErrorMessage name="postField" className={styles.errors}/>
+          <div className={styles.errorsMessage}>
+            <ErrorMessage name="postField" />
           </div>
           <MainButton type="submit" value="Add Post" />
         </Form>
