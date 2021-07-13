@@ -3,8 +3,19 @@ import { Redirect } from "react-router-dom";
 import MainButton from "../components/commons/Buttons";
 import styles from "./login.module.css";
 import TextField from "@material-ui/core/TextField";
+import { makeStyles } from '@material-ui/core/styles';
+const useStyles = makeStyles((theme) => ({
+  root: {
+    '& > *': {
+      margin: theme.spacing(2),
+      width: '25ch',
+    
+    },
+  },
+}));
 
 const LoginForm = (props) => {
+  const classes =useStyles()
   const validate = (values) => {
     const errors = {};
     if (!values.email) {
@@ -31,7 +42,7 @@ const LoginForm = (props) => {
       }}
     >
       {({ errors, touched, handleChange }) => (
-        <Form>
+        <Form className={classes.root}>
    
           <div className={styles.inputItem}>
             <TextField
@@ -41,6 +52,7 @@ const LoginForm = (props) => {
               placeholder="Email"
               error={props.touched && Boolean(props.errors.email)}
               onChange={handleChange}
+              label="Email" variant="outlined"
             />
             <div className={styles.errors}>
               <ErrorMessage name="email" />
